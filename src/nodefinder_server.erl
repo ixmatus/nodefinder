@@ -24,7 +24,7 @@ start_link(Addr, Port, Ttl) ->
     gen_server:start_link ({ local, ?MODULE }, ?MODULE, [ Addr, Port, Ttl ], []).
 
 discover() ->
-    gen_server:call (?MODULE, discover).
+    gen_server:call(?MODULE, discover).
 
 %-=====================================================================-
 %-                         gen_server callbacks                        -

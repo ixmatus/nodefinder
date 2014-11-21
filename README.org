@@ -1,1 +1,17 @@
-Erlang node LAN discovery service.  Uses multicast UDP.
+* Welcome!
+  =nodefinder= is an OTP application for handling automatic node
+  discovery and connecting using UDP MultiCast.
+
+** Installation
+   Add it to your rebar deps:
+
+   #+BEGIN_SRC
+   {deps, [
+     {nodefinder, "1.0.0", {git, "git://github.com/ixmatus/nodefinder", {tag, "1.0.0"}}}
+   ]}.
+   #+END_SRC
+
+   Then a simple =nodefinder:start()= or
+   =application:start(nodefinder)= should suffice. You can then use
+   =nodefinder:discover()= to initiate a discovery attempt, if nodes
+   are found it will automatically connect to them.
