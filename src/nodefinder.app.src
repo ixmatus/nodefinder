@@ -1,0 +1,12 @@
+{application, nodefinder,
+ [
+  {description, "NodeFinder"},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { nodefinder_app, []}},
+  {env, []}
+ ]}.
