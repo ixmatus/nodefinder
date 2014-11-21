@@ -1,0 +1,11 @@
+.eunit
+ebin
+rel/*.gz
+rel/dimmer
+deps
+*.o
+*.beam
+*.plt
+erl_crash.dump
+.depsolver_plt
+.rebar
