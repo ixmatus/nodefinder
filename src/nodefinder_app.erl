@@ -8,24 +8,30 @@
 %% this call returning.
 -spec discover() -> ok.
 discover() ->
-  nodefinder_server:discover().
+    nodefinder_server:discover().
 
 %=====================================================================
 % PRIVATE API
 %=====================================================================
 
 start() ->
-  crypto:start(),
-  application:start(nodefinder).
+    crypto:start(),
+    application:start(nodefinder).
 
 start(_Type, _Args) ->
-  { ok, Addr } = application:get_env(nodefinder, addr),
-  { ok, Port } = application:get_env(nodefinder, port),
-  { ok, Ttl }  = application:get_env(nodefinder, multicast_ttl),
-  nodefinder_sup:start_link (Addr, Port, Ttl).
+    { ok, Addr } = application:get_env(nodefinder, addr),
+    { ok, Port } = application:get_env(nodefinder, port),
+    { ok, Ttl }  = application:get_env(nodefinder, multicast_ttl),
+
+    case nodefinder_sup:start_link(Addr, Port, Ttl) of
+        {ok, Pid} ->
+            {ok, Pid};
+        Other ->
+            {error, Other}
+    end.
 
 stop () ->
-  application:stop(nodefinder).
+    application:stop(nodefinder).
 
 stop (_State) ->
-  ok.
+    ok.
