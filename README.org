@@ -11,6 +11,16 @@
    ]}.
    #+END_SRC
 
+   Configure it with this block in your =sys.config=:
+   
+   #+BEGIN_SRC
+   {nodefinder, [
+     {addr, {10,0,2,25}},
+     {port, 6872},
+     {ttl,  1}
+   ]},
+   #+END_SRC
+
    Then a simple =nodefinder:start()= or
    =application:start(nodefinder)= should suffice. You can then use
    =nodefinder:discover()= to initiate a discovery attempt, if nodes
